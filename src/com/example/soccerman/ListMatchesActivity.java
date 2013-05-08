@@ -16,7 +16,7 @@ public class ListMatchesActivity extends ListActivity {
 
 	LoginDataBaseAdapter loginDataBaseAdapter;
 	
-	private String[] matches = new String[] { "game 1", "game 2", "game3" };
+	private String[] matches; 
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -25,10 +25,10 @@ public class ListMatchesActivity extends ListActivity {
 		loginDataBaseAdapter=new LoginDataBaseAdapter(this);
 	    loginDataBaseAdapter=loginDataBaseAdapter.open();
  
-	    //matches = loginDataBaseAdapter.getMatches();
+	    matches = loginDataBaseAdapter.getMatches();
 	    
 		setListAdapter(new ArrayAdapter<String>(this, R.layout.match_list,matches));
- 
+
 		ListView listView = getListView();
 		listView.setTextFilterEnabled(true);
  

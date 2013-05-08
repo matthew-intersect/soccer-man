@@ -113,13 +113,11 @@ public class LoginDataBaseAdapter
 		}
 		public String[] getMatches()
 		{
-			String [] matches = {};
 			Cursor cursor = db.query("match", null, null, null, null, null, null);
-			int i=0;
-			for(boolean hasItem = cursor.moveToFirst(); hasItem; hasItem = cursor.moveToNext())
+			String[] matches = new String[cursor.getCount()];
+			while(cursor.moveToNext())
 			{
-				matches[i] = cursor.getString(cursor.getColumnIndex("opponent"));
-				i++;
+				matches[cursor.getPosition()] = cursor.getString(cursor.getColumnIndex("opponent"));
 			}
 			return matches;
 		}
