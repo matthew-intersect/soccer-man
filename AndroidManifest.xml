@@ -30,6 +30,10 @@
              android:label="List of Matches"
              android:name="com.example.soccerman.ListMatchesActivity" >
          </activity>
+         <activity
+             android:label="Attendance"
+             android:name="com.example.soccerman.MatchAttendanceActivity" >
+         </activity>
     </application>
 
 </manifest>

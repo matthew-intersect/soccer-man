@@ -20,6 +20,7 @@ public class DataBaseHelper extends SQLiteOpenHelper
 			_db.execSQL(LoginDataBaseAdapter.LOGIN_TABLE_CREATE);
 			_db.execSQL(LoginDataBaseAdapter.MATCH_TABLE_CREATE);
 			_db.execSQL(LoginDataBaseAdapter.MATCH_DATA);
+			_db.execSQL(LoginDataBaseAdapter.MATCH_ATTENDACE_CREATE);
 	}
 	// Called when there is a database version mismatch meaning that the version
 	// of the database on disk needs to be upgraded to the current version.

@@ -8,7 +8,7 @@
         android:id="@+id/editTextUserNameToLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="User Name"
+        android:hint="@string/user_name"
         android:ems="10" >
         <requestFocus />
     </EditText>
@@ -19,12 +19,12 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPassword"
-        android:hint="Password" />
+        android:hint="@string/password" />
 
     <Button
         android:id="@+id/buttonSignIn"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Sign In" />
+        android:text="@string/sign_in" />
 
 </LinearLayout>

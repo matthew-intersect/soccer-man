@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -6,16 +7,17 @@
     android:gravity="center_vertical" >
 
     <Button
-        android:id="@+id/buttonSignIN"
+        android:id="@+id/yesButton"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-         android:text="@string/sign_in" 
-         android:onClick="signIn"/>
+         android:text="@string/yes" 
+         android:onClick="yes"/>
 
     <Button
-        android:id="@+id/buttonSignUP"
+        android:id="@+id/noButton"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/create_account" />
+        android:text="@string/no"
+        android:onClick="no"/>
 
 </LinearLayout>
