@@ -34,6 +34,10 @@
              android:label="Attendance"
              android:name="com.example.soccerman.MatchAttendanceActivity" >
          </activity>
+         <activity
+             android:label="Match Attendance"
+             android:name="com.example.soccerman.ViewMatchAttendanceActivity" >
+         </activity>
     </application>
 
 </manifest>

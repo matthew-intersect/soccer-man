@@ -46,7 +46,9 @@ public class ListMatchesActivity extends ListActivity {
 				
 				if(admin)
 				{
-					
+					Intent adminHome = new Intent(ListMatchesActivity.this, ViewMatchAttendanceActivity.class);
+					adminHome.putExtra("match_id", position+1);
+					startActivity(adminHome);
 				}
 				else
 				{

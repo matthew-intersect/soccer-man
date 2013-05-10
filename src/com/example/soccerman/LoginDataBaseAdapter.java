@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteDatabase;
 public class LoginDataBaseAdapter 
 {
 		static final String DATABASE_NAME = "soccerman.db";
-		static final int DATABASE_VERSION = 7;
+		static final int DATABASE_VERSION = 8;
 		public static final int NAME_COLUMN = 1;
 
 		static final String LOGIN_TABLE_CREATE = "create table user"+
@@ -121,7 +121,7 @@ public class LoginDataBaseAdapter
 			cursor.close();
 			return password;
 		}
-		public void  updateUser(String userName, String firstname, String lastname, String password)
+		public void  updateUser(String userName, String firstname, String lastname, String password, boolean admin)
 		{
 			// Define the updated row content.
 			ContentValues updatedValues = new ContentValues();
@@ -130,6 +130,10 @@ public class LoginDataBaseAdapter
 			updatedValues.put("firstname", firstname);
 			updatedValues.put("lastname", lastname);
 			updatedValues.put("password",password);
+			if(admin)
+				updatedValues.put("role", "1");
+			else
+				updatedValues.put("role", "0");
 
 	        String where="username = ?";
 		    db.update("user",updatedValues, where, new String[]{userName});			   
@@ -172,4 +176,30 @@ public class LoginDataBaseAdapter
 						new String[] {String.valueOf(userId), String.valueOf(matchId)}); 
 			}
 		}
+		
+		public Cursor getPlayers(int matchId)
+		{
+//			String query = "select user.username, attendance.attendance from attendance inner join user on " +
+//					"attendance.user_id = user.id inner join match on attendance.match_id = match.id where match.id = ?;";
+//			
+//			return db.rawQuery(query, new String[] {String.valueOf(matchId)});
+			return db.query("user", null, "role = ?", new String[] {"0"}, null, null, null);
+		}
+		
+		public PlayerAttendance getAttendance(int userId, int matchId)
+		{
+			Cursor cursor = db.query("attendance", null, "user_id = ? and match_id = ?",
+					new String[] {String.valueOf(userId), String.valueOf(matchId)}, null, null, null);
+			if(cursor.getCount()<1) // no attendance row in database
+	        {
+	        	cursor.close();
+	        	return PlayerAttendance.NOT_RESPONDED;
+	        }
+			cursor.moveToFirst();
+			int attend = Integer.valueOf(cursor.getString(cursor.getColumnIndex("attendance")));
+			if(attend == 1)
+				return PlayerAttendance.YES;
+			return PlayerAttendance.NO;
+		}
+		
 }
